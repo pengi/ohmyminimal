@@ -19,17 +19,6 @@ setopt multios              # enable redirect to multiple streams: echo >file1 >
 setopt long_list_jobs       # show long list format job notifications
 setopt interactivecomments  # recognize comments
 
-# define pager dependant on what is available (less or more)
-if (( ${+commands[less]} )); then
-  env_default 'PAGER' 'less'
-  env_default 'LESS' '-R'
-elif (( ${+commands[more]} )); then
-  env_default 'PAGER' 'more'
-fi
-
-## super user alias
-alias _='sudo '
-
 ## more intelligent acking for ubuntu users and no alias for users without ack
 if (( $+commands[ack-grep] )); then
   alias afind='ack-grep -il'

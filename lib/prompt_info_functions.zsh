@@ -20,22 +20,12 @@ function chruby_prompt_info \
   jenv_prompt_info \
   azure_prompt_info \
   tf_prompt_info \
+  rvvm_prompt_info \
 {
   return 1
 }
 
-# oh-my-zsh supports an rvm prompt by default
-# get the name of the rvm ruby version
-function rvm_prompt_info() {
-  [ -f $HOME/.rvm/bin/rvm-prompt ] || return 1
-  local rvm_prompt
-  rvm_prompt=$($HOME/.rvm/bin/rvm-prompt ${=ZSH_THEME_RVM_PROMPT_OPTIONS} 2>/dev/null)
-  [[ -z "${rvm_prompt}" ]] && return 1
-  echo "${ZSH_THEME_RUBY_PROMPT_PREFIX}${rvm_prompt:gs/%/%%}${ZSH_THEME_RUBY_PROMPT_SUFFIX}"
-}
-
 ZSH_THEME_RVM_PROMPT_OPTIONS="i v g"
-
 
 # use this to enable users to see their ruby version, no matter which
 # version management system they use
